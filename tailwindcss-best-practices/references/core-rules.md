@@ -125,8 +125,9 @@ instead of equivalent `w-[11px]` or `size-[11px]` arbitrary values.
 Arbitrary values remain appropriate for exact values outside the chosen scale,
 genuine one-off constraints, or expressions such as `calc()`. Do not round an
 exact design value to a different dimension to force it onto a whole number or
-a multiple of four. If the same out-of-scale value recurs, consider a named
-theme token.
+a multiple of four. If the same out-of-scale value recurs across independent
+components, confirm that it represents shared project-wide semantics before
+proposing a named theme token.
 
 Good:
 
@@ -135,7 +136,10 @@ Good:
 <div class="grid-cols-[240px_1fr]"></div>
 ```
 
-Repeated arbitrary values usually indicate a missing token.
+Repeated arbitrary values can indicate a missing token, but repetition by
+itself is not enough to create a global token. Check that the values express the
+same semantic decision and are reused across the project; otherwise keep them
+as local component styles or justified one-off utilities.
 
 If this appears repeatedly:
 
@@ -145,12 +149,13 @@ rounded-[10px]
 rounded-[10px]
 ```
 
-promote it to a design token.
+consider a design token only when it represents a shared project-level
+decision, not merely because the value repeats within one page.
 
 Rule:
 
 > one-off constraint → arbitrary value is acceptable  
-> repeated design decision → create a token
+> confirmed shared project-level design decision → use or propose a token
 
 ### Font sizes
 

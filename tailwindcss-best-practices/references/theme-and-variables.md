@@ -1,5 +1,28 @@
 # Theme and CSS Variables
 
+## Reuse before adding tokens
+
+Treat the project's existing CSS variables, `@theme` declarations, and
+component-library tokens as the source of truth. Before introducing a value,
+inspect the global stylesheet, theme files, and existing components. Prefer in
+this order:
+
+1. An existing semantic Tailwind utility backed by a project token.
+2. An existing CSS custom property through Tailwind's variable shorthand.
+3. A built-in Tailwind utility that fits the design.
+4. A justified one-off arbitrary value or a component-scoped runtime variable.
+
+Do not add a global CSS variable or `@theme` entry just to implement a single
+page, compensate for a one-off dimension, or avoid writing an arbitrary value.
+A new global token is a design-system change. Add one only when the user asks
+for a theme/token change or the project clearly establishes the value as a
+shared semantic convention. Repetition in one screen alone does not establish
+a project-wide token.
+
+Keep runtime variables scoped to the component or feature that owns the state.
+Do not leave unused or speculative variables in global stylesheets. If a task
+changes a token, check existing usages and update them consistently.
+
 ## CSS-first theme configuration
 
 Prefer Tailwind CSS 4 CSS-first configuration.
@@ -205,7 +228,11 @@ unless the color itself is the semantic meaning.
 
 ---
 
-## Runtime theme architecture
+## Example runtime theme architecture
+
+This is a reference pattern for projects that already need semantic,
+theme-switchable values. Do not scaffold this full token set while implementing
+an ordinary page or component.
 
 Recommended pattern:
 

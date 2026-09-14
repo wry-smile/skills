@@ -210,7 +210,17 @@ Separate three concepts:
 2. semantic Tailwind tokens
 3. runtime/application CSS variables
 
-Use `@theme` when a value should participate in Tailwind utilities.
+Inspect and reuse the project's existing theme variables and semantic tokens
+before adding any. Treat a new global token as a project-level design-system
+change: do not create one just to style a single generated page or make a
+one-off value look semantic. For one-off static values, use an existing utility
+or a justified arbitrary value; keep runtime-only variables local to the
+component that owns them.
+
+Add a new `@theme` token only when the task calls for changing the design
+system, the repository has an established token-authoring convention, or the
+value is confirmed as a reusable semantic decision across the project. Do not
+add unused or speculative CSS variables.
 
 Use normal CSS variables when the value is runtime state or application configuration.
 
@@ -281,8 +291,10 @@ Choose the utility by intent first (`size-*`, `w-full`, a fraction, or a
 spacing-scale value). Use arbitrary values for exact values outside the
 project's scale, genuine one-off constraints, or expressions that need
 `calc()`. Do not round a precise design value to a different size just to make
-it a whole number or a multiple of four. Repeated out-of-scale design values
-usually deserve a named theme token.
+it a whole number or a multiple of four. If an out-of-scale value recurs
+across the project with the same semantic purpose, reuse or propose a token
+only when the task includes design-system changes; repetition on one page alone
+is not a reason to add a global variable.
 
 For typography, prefer Tailwind's semantic type scale (`text-xs`, `text-sm`,
 `text-base`, `text-lg`, `text-xl`, and heading sizes) over one-off values such
@@ -308,9 +320,10 @@ prefer familiar even-pixel values instead of inventing fractional sizes; for
 example, choose between `w-7` (28px) and `w-7.5` (30px) based on the layout.
 
 For a genuine one-off, use a concise, readable value (for example
-`text-[10px]`). If a custom font size recurs, define a semantic `--text-*` theme
-token and use its generated utility. Do not translate pixels into long decimal
-rem values in arbitrary classes.
+`text-[10px]`). If a custom font size recurs across independent components and
+has a shared semantic purpose, reuse an existing token or propose a new one
+only when the task includes design-system changes. Do not translate pixels into
+long decimal rem values in arbitrary classes.
 
 Good:
 
@@ -319,7 +332,9 @@ Good:
 <div class="grid-cols-[240px_1fr]"></div>
 ```
 
-Repeated arbitrary values usually indicate a missing token.
+Repeated arbitrary values can signal a missing token, but repetition within a
+single page is not enough reason to add a global variable. Confirm that the
+value represents shared project-wide semantics first.
 
 ## 12. Accessibility
 
@@ -349,21 +364,25 @@ See `references/review-checklist.md`.
 ## Decision model
 
 ```text
-Existing Tailwind utility?
+Existing semantic theme token?
+        ↓ yes
+Consume its utility or CSS variable
+
+Existing Tailwind utility fits?
         ↓ yes
 Use utility
 
-Repeated design value?
+Runtime/application value?
         ↓ yes
-Create/use design token
+Use a component-scoped CSS variable
 
-Runtime CSS value?
+One-off static value outside the utility scale?
         ↓ yes
-CSS variable + Tailwind variable shorthand
+Use a justified arbitrary value
 
-One-off special value?
+New shared theme token explicitly requested or established by project convention?
         ↓ yes
-Arbitrary value
+Add/use the project-level token
 
 Repeated UI structure?
         ↓ yes

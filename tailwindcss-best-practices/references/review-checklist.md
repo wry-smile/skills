@@ -17,6 +17,9 @@
 - [ ] Simple CSS variables use `property-(--variable)` shorthand.
 - [ ] `text-[var(--x)]` is not used when `text-(--x)` is clearer.
 - [ ] Semantic Tailwind tokens are preferred when they already exist.
+- [ ] Existing project CSS variables and theme tokens are consumed before adding new ones.
+- [ ] No global token or CSS variable was added solely for a one-off page value.
+- [ ] New global tokens have a clear project-level semantic purpose and are used.
 - [ ] Runtime values use CSS variables rather than runtime class construction.
 - [ ] Theme tokens and runtime variables have clear ownership.
 - [ ] An equivalent spacing-scale utility was considered before using an arbitrary length.
