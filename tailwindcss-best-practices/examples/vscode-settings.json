@@ -1,0 +1,32 @@
+{
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+
+  "tailwindCSS.classFunctions": [
+    "cn",
+    "clsx",
+    "cva"
+  ],
+
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass"
+  ],
+
+  "tailwindCSS.experimental.configFile": {
+    "modules/web-test/src/styles.css": "modules/web-test/src/**"
+  },
+
+  "tailwindCSS.experimental.classRegex": [
+    [
+      "host\\s*:\\s*\\{[\\s\\S]*?class\\s*:\\s*['\"`]([^'\"`]*)['\"`]",
+      "([^\\s]+)"
+    ]
+  ]
+}

@@ -1,0 +1,42 @@
+/*
+ * Runtime/application variables.
+ */
+:root {
+  --app-primary: oklch(0.55 0.18 250);
+
+  --app-background: oklch(0.985 0 0);
+  --app-foreground: oklch(0.2 0 0);
+
+  --app-surface: oklch(1 0 0);
+  --app-surface-container: oklch(0.97 0 0);
+
+  --app-muted: oklch(0.55 0 0);
+  --app-border: oklch(0.9 0 0);
+}
+
+[data-theme="dark"] {
+  --app-background: oklch(0.16 0 0);
+  --app-foreground: oklch(0.95 0 0);
+
+  --app-surface: oklch(0.2 0 0);
+  --app-surface-container: oklch(0.24 0 0);
+
+  --app-muted: oklch(0.7 0 0);
+  --app-border: oklch(0.32 0 0);
+}
+
+/*
+ * Expose semantic application variables to Tailwind.
+ */
+@theme inline {
+  --color-primary: var(--app-primary);
+
+  --color-background: var(--app-background);
+  --color-foreground: var(--app-foreground);
+
+  --color-surface: var(--app-surface);
+  --color-surface-container: var(--app-surface-container);
+
+  --color-muted: var(--app-muted);
+  --color-border: var(--app-border);
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@wry-smile/skills",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reusable agent skills for industrial SCADA/HMI SVG symbols.",
+  "packageManager": "pnpm@10.12.4",
+  "scripts": {
+    "validate": "node scripts/validate.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
