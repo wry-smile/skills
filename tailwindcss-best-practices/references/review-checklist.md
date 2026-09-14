@@ -25,6 +25,8 @@
 - [ ] Repeated custom font sizes use semantic theme tokens instead of scattered arbitrary values.
 - [ ] Odd or unusually precise font sizes are intentional, not incidental generated values.
 - [ ] Custom font sizes chosen without a design spec favor familiar even-pixel values when suitable.
+- [ ] No long decimal `rem` arbitrary font-size classes are generated.
+- [ ] Arbitrary `rem` dimensions are converted to spacing utilities when exactly representable on the active scale.
 
 ## Static detection
 

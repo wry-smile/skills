@@ -286,7 +286,8 @@ usually deserve a named theme token.
 
 For typography, prefer Tailwind's semantic type scale (`text-xs`, `text-sm`,
 `text-base`, `text-lg`, `text-xl`, and heading sizes) over one-off values such
-as `text-[39px]` or `text-[0.5625rem]`. When no design spec is supplied, use a
+as `text-[39px]`, `text-[0.5625rem]`, or `text-[0.90625rem]`. Never emit a
+long decimal `rem` arbitrary font size. When no design spec is supplied, use a
 consistent set of familiar sizes instead of inventing many near-duplicates.
 If a custom size must be chosen from scratch, favor a familiar even-numbered
 pixel value (for example, 40px rather than 39px) when it fits the intended
@@ -297,6 +298,13 @@ For example, prefer `text-4xl` (36px) over `text-[39px]` when that scale step
 fits. For a deliberately small label, prefer `text-xs` (12px) over
 `text-[0.5625rem]` (9px); if 10px is explicitly required, write
 `text-[10px]`.
+
+For spacing-based dimensions, convert an arbitrary `rem` length to a numeric
+utility when it exactly matches the active spacing scale. With Tailwind v4's
+default `--spacing: 0.25rem`, `w-[1.8125rem]` is equivalent to `w-7.25`.
+If selecting a dimension from scratch and no exact spec exists, prefer a
+familiar even-pixel size; preserve the exact value when it comes from a design
+spec and the matching scale utility is clearer than an arbitrary value.
 
 For a genuine one-off, use a concise, readable value (for example
 `text-[10px]`). If a custom font size recurs, define a semantic `--text-*` theme

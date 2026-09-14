@@ -155,8 +155,9 @@ Rule:
 ### Font sizes
 
 Prefer the project's semantic type scale and Tailwind's built-in `text-*`
-utilities over one-off values such as `text-[39px]` or
-`text-[0.5625rem]`. When no design spec is supplied, use a small, consistent
+utilities over one-off values such as `text-[39px]`, `text-[0.5625rem]`, or
+`text-[0.90625rem]`. Never emit a long decimal `rem` arbitrary font size.
+When no design spec is supplied, use a small, consistent
 set of familiar sizes instead of inventing many near-duplicate values. If a
 custom size must be chosen from scratch, favor a familiar even-numbered pixel
 value (for example, 40px rather than 39px) when it fits the intended hierarchy.
@@ -172,6 +173,16 @@ For a genuine one-off, use a concise value such as `text-[10px]`. If the same
 custom font size recurs, define a semantic typography token with `@theme`
 (`--text-*`) and use the generated class. Avoid long decimal rem values in
 arbitrary class names.
+
+### Rem lengths and spacing utilities
+
+When an arbitrary `rem` length matches Tailwind v4's active spacing scale,
+write the equivalent numeric utility. With the default `--spacing: 0.25rem`,
+`w-[1.8125rem]` is equivalent to `w-7.25`; use the same conversion for other
+spacing-based dimensions such as `h-*`, `p-*`, and `gap-*` when applicable.
+If choosing a dimension from scratch without an exact spec, prefer a familiar
+even-pixel size. For an exact supplied size, preserve its intended dimensions
+and prefer the equivalent scale utility over arbitrary notation.
 
 ---
 
