@@ -302,9 +302,10 @@ fits. For a deliberately small label, prefer `text-xs` (12px) over
 For spacing-based dimensions, convert an arbitrary `rem` length to a numeric
 utility when it exactly matches the active spacing scale. With Tailwind v4's
 default `--spacing: 0.25rem`, `w-[1.8125rem]` is equivalent to `w-7.25`.
-If selecting a dimension from scratch and no exact spec exists, prefer a
-familiar even-pixel size; preserve the exact value when it comes from a design
-spec and the matching scale utility is clearer than an arbitrary value.
+When preserving a supplied or already-chosen measurement, keep its exact size
+and use the equivalent scale utility. When choosing a dimension from scratch,
+prefer familiar even-pixel values instead of inventing fractional sizes; for
+example, choose between `w-7` (28px) and `w-7.5` (30px) based on the layout.
 
 For a genuine one-off, use a concise, readable value (for example
 `text-[10px]`). If a custom font size recurs, define a semantic `--text-*` theme

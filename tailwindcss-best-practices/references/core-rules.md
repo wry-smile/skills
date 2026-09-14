@@ -180,9 +180,10 @@ When an arbitrary `rem` length matches Tailwind v4's active spacing scale,
 write the equivalent numeric utility. With the default `--spacing: 0.25rem`,
 `w-[1.8125rem]` is equivalent to `w-7.25`; use the same conversion for other
 spacing-based dimensions such as `h-*`, `p-*`, and `gap-*` when applicable.
-If choosing a dimension from scratch without an exact spec, prefer a familiar
-even-pixel size. For an exact supplied size, preserve its intended dimensions
-and prefer the equivalent scale utility over arbitrary notation.
+Preserve supplied or already-chosen dimensions exactly through the equivalent
+scale utility. When choosing from scratch, prefer familiar even-pixel sizes
+instead of inventing fractional dimensions; for example, choose `w-7` (28px)
+or `w-7.5` (30px) based on the layout.
 
 ---
 
