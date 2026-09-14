@@ -14,7 +14,10 @@ references or examples.
 ## Install with pnpm
 
 Use the Skills CLI through `pnpm dlx`; the CLI installs skill folders into the
-agent's skill directory. From this repository, try a skill locally:
+agent's standard skill directory. For Codex, project installation goes to
+`.agents/skills/` (plural), while `--global` installs to the Codex user
+directory. The CLI chooses these paths from `--agent`; it does not offer a
+free-form destination path. From this repository, try a skill locally:
 
 ```bash
 pnpm dlx skills add . --skill tailwindcss-best-practices --agent codex
@@ -39,6 +42,11 @@ pnpm dlx skills add wry-smile/skills \
 Add `--global` to make the skill available across projects, or omit it to
 install into the current project. Use `--list` to inspect skills available
 from a source before installing.
+
+Codex looks for project skills in `.agents/skills/`, not `.agent/skills/`.
+If another tool or project convention requires the singular `.agent/skills/`
+path, install the skill and copy its directory there manually; Codex itself
+will not discover that nonstandard path automatically.
 
 ## Validate and contribute
 
