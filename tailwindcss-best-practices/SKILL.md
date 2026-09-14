@@ -284,6 +284,25 @@ project's scale, genuine one-off constraints, or expressions that need
 it a whole number or a multiple of four. Repeated out-of-scale design values
 usually deserve a named theme token.
 
+For typography, prefer Tailwind's semantic type scale (`text-xs`, `text-sm`,
+`text-base`, `text-lg`, `text-xl`, and heading sizes) over one-off values such
+as `text-[39px]` or `text-[0.5625rem]`. When no design spec is supplied, use a
+consistent set of familiar sizes instead of inventing many near-duplicates.
+If a custom size must be chosen from scratch, favor a familiar even-numbered
+pixel value (for example, 40px rather than 39px) when it fits the intended
+hierarchy. Even values are a generation preference, not a CSS requirement;
+preserve an exact supplied design size when fidelity matters.
+
+For example, prefer `text-4xl` (36px) over `text-[39px]` when that scale step
+fits. For a deliberately small label, prefer `text-xs` (12px) over
+`text-[0.5625rem]` (9px); if 10px is explicitly required, write
+`text-[10px]`.
+
+For a genuine one-off, use a concise, readable value (for example
+`text-[10px]`). If a custom font size recurs, define a semantic `--text-*` theme
+token and use its generated utility. Do not translate pixels into long decimal
+rem values in arbitrary classes.
+
 Good:
 
 ```html

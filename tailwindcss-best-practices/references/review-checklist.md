@@ -21,6 +21,10 @@
 - [ ] Theme tokens and runtime variables have clear ownership.
 - [ ] An equivalent spacing-scale utility was considered before using an arbitrary length.
 - [ ] Exact design dimensions were not rounded just to match a preferred increment.
+- [ ] Typography uses the project's semantic type scale where possible.
+- [ ] Repeated custom font sizes use semantic theme tokens instead of scattered arbitrary values.
+- [ ] Odd or unusually precise font sizes are intentional, not incidental generated values.
+- [ ] Custom font sizes chosen without a design spec favor familiar even-pixel values when suitable.
 
 ## Static detection
 

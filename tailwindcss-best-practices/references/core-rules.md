@@ -152,6 +152,27 @@ Rule:
 > one-off constraint → arbitrary value is acceptable  
 > repeated design decision → create a token
 
+### Font sizes
+
+Prefer the project's semantic type scale and Tailwind's built-in `text-*`
+utilities over one-off values such as `text-[39px]` or
+`text-[0.5625rem]`. When no design spec is supplied, use a small, consistent
+set of familiar sizes instead of inventing many near-duplicate values. If a
+custom size must be chosen from scratch, favor a familiar even-numbered pixel
+value (for example, 40px rather than 39px) when it fits the intended hierarchy.
+Even values are a generation preference, not a CSS requirement; preserve an
+exact supplied design size when fidelity matters.
+
+For example, use `text-4xl` (36px) instead of `text-[39px]` when that scale
+step fits. For a deliberately small label, prefer `text-xs` (12px) over
+`text-[0.5625rem]` (9px); if 10px is explicitly required, write
+`text-[10px]`.
+
+For a genuine one-off, use a concise value such as `text-[10px]`. If the same
+custom font size recurs, define a semantic typography token with `@theme`
+(`--text-*`) and use the generated class. Avoid long decimal rem values in
+arbitrary class names.
+
 ---
 
 ## Layout
