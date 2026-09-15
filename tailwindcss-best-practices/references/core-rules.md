@@ -179,6 +179,15 @@ custom font size recurs, define a semantic typography token with `@theme`
 (`--text-*`) and use the generated class. Avoid long decimal rem values in
 arbitrary class names.
 
+### Color opacity modifiers
+
+Use Tailwind's slash opacity modifier with a percentage for simple alpha
+values. For example, `bg-[#6a80ff]/[0.12]` should be written as
+`bg-[#6a80ff]/12`. The percentage form is shorter and communicates the same
+12% alpha. Preserve the exact alpha rather than rounding it; use a decimal or
+CSS-variable form only when the value is not clearly expressible as a simple
+percentage.
+
 ### Rem lengths and spacing utilities
 
 When an arbitrary `rem` length matches Tailwind v4's active spacing scale,

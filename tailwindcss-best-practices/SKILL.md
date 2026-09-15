@@ -325,6 +325,13 @@ has a shared semantic purpose, reuse an existing token or propose a new one
 only when the task includes design-system changes. Do not translate pixels into
 long decimal rem values in arbitrary classes.
 
+For color opacity modifiers, prefer the percentage form when the alpha is
+directly representable. Convert `bg-[#6a80ff]/[0.12]` to
+`bg-[#6a80ff]/12`; do not keep brackets around a simple decimal alpha or round
+it to a different opacity. Use an arbitrary opacity modifier only for a value
+that cannot be expressed clearly as a percentage, a CSS variable, or an
+expression.
+
 Good:
 
 ```html
