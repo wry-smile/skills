@@ -30,6 +30,8 @@
 - [ ] Custom font sizes chosen without a design spec favor familiar even-pixel values when suitable.
 - [ ] No long decimal `rem` arbitrary font-size classes are generated.
 - [ ] Arbitrary `rem` dimensions are converted to spacing utilities when exactly representable on the active scale.
+- [ ] Spacing-backed arbitrary lengths such as `h-[50px]` are converted to numeric utilities such as `h-12.5`.
+- [ ] Numeric spacing utilities are not forced onto percentages, viewport sizes, CSS variables, or calculated values.
 - [ ] Simple color alpha values use slash percentage syntax (for example `/12` instead of `/[0.12]`).
 
 ## Static detection

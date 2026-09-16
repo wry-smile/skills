@@ -133,6 +133,27 @@ Single application:
 
 Do not add explicit mapping when automatic detection already works reliably unless the repository prefers explicit configuration.
 
+## Canonical class suggestions
+
+The official Tailwind CSS IntelliSense extension's
+`tailwindCSS.lint.suggestCanonicalClasses` rule warns when a class has a more
+canonical spelling. It is enabled as a warning by default. Treat these
+suggestions as a useful normalization signal when they preserve the exact
+computed CSS. For Tailwind v4 spacing-backed lengths, this includes converting
+classes such as `h-[50px]` to `h-12.5` when the active `--spacing` is the default
+`0.25rem` scale.
+
+Do not blindly apply a suggestion when the project overrides `--spacing`, the
+units are not equivalent, or the value is intentionally outside the spacing
+scale. Keep the project's existing setting unless the user explicitly asks to
+change lint policy:
+
+```json
+{
+  "tailwindCSS.lint.suggestCanonicalClasses": "warning"
+}
+```
+
 ---
 
 ## Angular host metadata

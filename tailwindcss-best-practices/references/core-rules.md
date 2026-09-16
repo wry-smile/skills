@@ -190,14 +190,19 @@ percentage.
 
 ### Rem lengths and spacing utilities
 
-When an arbitrary `rem` length matches Tailwind v4's active spacing scale,
-write the equivalent numeric utility. With the default `--spacing: 0.25rem`,
-`w-[1.8125rem]` is equivalent to `w-7.25`; use the same conversion for other
-spacing-based dimensions such as `h-*`, `p-*`, and `gap-*` when applicable.
+When an arbitrary CSS length matches Tailwind v4's active spacing scale, write
+the equivalent numeric utility. With the default `--spacing: 0.25rem`,
+`h-[50px]` is equivalent to `h-12.5` and `w-[1.8125rem]` is equivalent to
+`w-7.25`; use the same conversion for other spacing-based dimensions such as
+`w-*`, `h-*`, `size-*`, `min-w-*`, `max-h-*`, `p-*`, `m-*`, `gap-*`, and inset
+utilities when applicable.
 Preserve supplied or already-chosen dimensions exactly through the equivalent
 scale utility. When choosing from scratch, prefer familiar even-pixel sizes
 instead of inventing fractional dimensions; for example, choose `w-7` (28px)
-or `w-7.5` (30px) based on the layout.
+or `w-7.5` (30px) based on the layout. This rule applies to spacing-backed
+lengths, not every CSS dimension: keep `w-full`, `min-h-screen`, percentages,
+viewport units, `calc()`, and other values that do not map cleanly to spacing
+utilities.
 
 ---
 

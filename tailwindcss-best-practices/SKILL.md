@@ -311,9 +311,14 @@ fits. For a deliberately small label, prefer `text-xs` (12px) over
 `text-[0.5625rem]` (9px); if 10px is explicitly required, write
 `text-[10px]`.
 
-For spacing-based dimensions, convert an arbitrary `rem` length to a numeric
+For spacing-based dimensions, convert an arbitrary CSS length to a numeric
 utility when it exactly matches the active spacing scale. With Tailwind v4's
-default `--spacing: 0.25rem`, `w-[1.8125rem]` is equivalent to `w-7.25`.
+default `--spacing: 0.25rem`, `h-[50px]` is equivalent to `h-12.5` and
+`w-[1.8125rem]` is equivalent to `w-7.25`.
+This does not mean every size property should use a raw `rem` value: use the
+numeric Tailwind utility for spacing-backed lengths, and keep semantic,
+fractional, viewport, percentage, variable, and calculated values in their
+appropriate utility form.
 When preserving a supplied or already-chosen measurement, keep its exact size
 and use the equivalent scale utility. When choosing a dimension from scratch,
 prefer familiar even-pixel values instead of inventing fractional sizes; for
