@@ -22,16 +22,17 @@
 - [ ] New global tokens have a clear project-level semantic purpose and are used.
 - [ ] Runtime values use CSS variables rather than runtime class construction.
 - [ ] Theme tokens and runtime variables have clear ownership.
-- [ ] An equivalent spacing-scale utility was considered before using an arbitrary length.
+- [ ] Arbitrary lengths are converted only when an exact equivalent is confirmed against the active Tailwind theme and `rem` context.
+- [ ] No default `--spacing`, root font size, or pixel-to-spacing arithmetic is assumed.
+- [ ] Exact arbitrary values are kept when no exact canonical utility exists; they are not rounded to a nearby token.
+- [ ] Equivalent utilities are combined only when values, variants, importance, and generated CSS semantics match.
+- [ ] Built-in variants and current utilities replace arbitrary/deprecated forms only when Tailwind confirms the equivalent form.
 - [ ] Exact design dimensions were not rounded just to match a preferred increment.
 - [ ] Typography uses the project's semantic type scale where possible.
 - [ ] Repeated custom font sizes use semantic theme tokens instead of scattered arbitrary values.
 - [ ] Odd or unusually precise font sizes are intentional, not incidental generated values.
 - [ ] Custom font sizes chosen without a design spec favor familiar even-pixel values when suitable.
 - [ ] No long decimal `rem` arbitrary font-size classes are generated.
-- [ ] Arbitrary `rem` dimensions are converted to spacing utilities when exactly representable on the active scale.
-- [ ] Spacing-backed arbitrary lengths such as `h-[50px]` are converted to numeric utilities such as `h-12.5`.
-- [ ] Numeric spacing utilities are not forced onto percentages, viewport sizes, CSS variables, or calculated values.
 - [ ] Simple color alpha values use slash percentage syntax (for example `/12` instead of `/[0.12]`).
 
 ## Static detection

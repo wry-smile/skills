@@ -106,28 +106,21 @@ over sibling-margin spacing.
 
 ---
 
-## Arbitrary values
+## Canonical values and arbitrary values
 
-Before writing an arbitrary length, check for an equivalent utility on the
-Tailwind spacing scale. In v4, numeric spacing utilities are derived from
-`--spacing` and support fractional multipliers. With the default
-`--spacing: 0.25rem`, `w-2.75` expresses 11px when the root font size is 16px.
+Prefer Tailwind's canonical class when the active Tailwind version and
+configuration confirm that it generates equivalent CSS. Tailwind v4's numeric
+spacing utilities depend on the active `--spacing` value; equivalence between
+pixel and `rem` values also depends on the relevant `rem` context. Do not
+assume `--spacing: 0.25rem`, a 16px root font size, or convert pixels by
+dividing by four. For example, use `w-2.75` for `w-[11px]` only when those
+settings make them exactly equivalent.
 
-Prefer:
-
-```html
-<div class="w-2.75"></div>
-<div class="size-2.75"></div>
-```
-
-instead of equivalent `w-[11px]` or `size-[11px]` arbitrary values.
-
-Arbitrary values remain appropriate for exact values outside the chosen scale,
-genuine one-off constraints, or expressions such as `calc()`. Do not round an
-exact design value to a different dimension to force it onto a whole number or
-a multiple of four. If the same out-of-scale value recurs across independent
-components, confirm that it represents shared project-wide semantics before
-proposing a named theme token.
+Arbitrary values remain valid for exact values outside the active scale,
+genuine one-off constraints, and expressions such as `calc()`. Preserve the
+exact requested value when no exact canonical utility exists; do not round it
+to a nearby scale value. See the canonical-class rules in `../SKILL.md` for
+variant, shorthand-combination, and deprecated-utility guidance.
 
 Good:
 
@@ -187,22 +180,6 @@ values. For example, `bg-[#6a80ff]/[0.12]` should be written as
 12% alpha. Preserve the exact alpha rather than rounding it; use a decimal or
 CSS-variable form only when the value is not clearly expressible as a simple
 percentage.
-
-### Rem lengths and spacing utilities
-
-When an arbitrary CSS length matches Tailwind v4's active spacing scale, write
-the equivalent numeric utility. With the default `--spacing: 0.25rem`,
-`h-[50px]` is equivalent to `h-12.5` and `w-[1.8125rem]` is equivalent to
-`w-7.25`; use the same conversion for other spacing-based dimensions such as
-`w-*`, `h-*`, `size-*`, `min-w-*`, `max-h-*`, `p-*`, `m-*`, `gap-*`, and inset
-utilities when applicable.
-Preserve supplied or already-chosen dimensions exactly through the equivalent
-scale utility. When choosing from scratch, prefer familiar even-pixel sizes
-instead of inventing fractional dimensions; for example, choose `w-7` (28px)
-or `w-7.5` (30px) based on the layout. This rule applies to spacing-backed
-lengths, not every CSS dimension: keep `w-full`, `min-h-screen`, percentages,
-viewport units, `calc()`, and other values that do not map cleanly to spacing
-utilities.
 
 ---
 

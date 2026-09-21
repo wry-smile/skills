@@ -136,17 +136,18 @@ Do not add explicit mapping when automatic detection already works reliably unle
 ## Canonical class suggestions
 
 The official Tailwind CSS IntelliSense extension's
-`tailwindCSS.lint.suggestCanonicalClasses` rule warns when a class has a more
-canonical spelling. It is enabled as a warning by default. Treat these
-suggestions as a useful normalization signal when they preserve the exact
-computed CSS. For Tailwind v4 spacing-backed lengths, this includes converting
-classes such as `h-[50px]` to `h-12.5` when the active `--spacing` is the default
-`0.25rem` scale.
+`tailwindCSS.lint.suggestCanonicalClasses` rule asks Tailwind CSS 4 core to
+canonicalize each class individually, using the detected design system and the
+extension's configured `rootFontSize`. Treat a suggestion as a useful
+normalization signal when the project configuration makes the generated CSS
+equivalent. For example, `h-[50px]` can become `h-12.5` when the active
+`--spacing` and `rem` context make them equivalent.
 
-Do not blindly apply a suggestion when the project overrides `--spacing`, the
-units are not equivalent, or the value is intentionally outside the spacing
-scale. Keep the project's existing setting unless the user explicitly asks to
-change lint policy:
+Do not infer equivalence from arithmetic alone or assume default spacing/root
+font settings. Keep an arbitrary value when no exact canonical form exists.
+This diagnostic currently checks classes one at a time; it does not suggest
+class-list combinations such as `w-4 h-4` → `size-4`. Keep the project's
+existing lint setting unless the user explicitly asks to change policy:
 
 ```json
 {
