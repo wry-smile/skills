@@ -6,6 +6,8 @@ references or examples.
 
 ## Included skills
 
+- [`autodesk-fusion-parametric`](./autodesk-fusion-parametric/SKILL.md) — creates
+  editable, parameter-driven Autodesk Fusion models with the Fusion Python API.
 - [`scada-symbol`](./scada-symbol/SKILL.md) — creates standalone industrial
   SVG symbols for traditional SCADA/HMI interfaces.
 - [`tailwindcss-best-practices`](./tailwindcss-best-practices/SKILL.md) —
@@ -29,11 +31,12 @@ After this repository is pushed to GitHub, install directly from it:
 pnpm dlx skills add wry-smile/skills --skill tailwindcss-best-practices --agent codex
 ```
 
-Install both skills by repeating `--skill`, or use `--skill '*'` to install all
+Install several skills by repeating `--skill`, or use `--skill '*'` to install all
 skills in the repository:
 
 ```bash
 pnpm dlx skills add wry-smile/skills \
+  --skill autodesk-fusion-parametric \
   --skill scada-symbol \
   --skill tailwindcss-best-practices \
   --agent codex
